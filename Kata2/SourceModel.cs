@@ -1,0 +1,42 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Kata2
+{
+    public class SourceModel
+    {
+        public string Name { get; set; }
+
+        public string Phone { get; set; }
+
+        public string EyeColor { get; set; }
+
+        public string PositionID { get; set; }
+
+        public string Title { get; set; }
+
+        public string Key
+        {
+            get { return Key; } 
+            set { Key = Name + Phone + EyeColor; } 
+        }
+
+        public SourceModel(string input)
+        {
+            var dataPoints = AssignInputToModel(input);
+            Name = dataPoints[0];
+            Phone = dataPoints[1];
+            EyeColor = dataPoints[2];
+            PositionID = dataPoints[3];
+            Title = dataPoints[4];
+        }
+
+        public List<string> AssignInputToModel(string input)
+        {
+            return input.Split(new string[]{", "}, 5, StringSplitOptions.None).ToList();
+        }
+    }
+}

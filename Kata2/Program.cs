@@ -10,15 +10,59 @@ namespace Kata2
     {
         static void Main(string[] args)
         {
-            var dir = Directory.GetCurrentDirectory();
-            string path = "../../input/input.txt";
-            if (File.Exists(path))
-            {
-                var f =File.OpenRead(path);
-            }
-
+            var file = new Source();
+            file.CreateSourceSet();
+            Console.WriteLine(file);
+            Console.ReadKey();
         }
     }
+
+    public class Source
+    {
+        private string path;
+        public List<SourceModel> sourceSet;
+
+        public Source() :this("../../input/input.txt"){}
+
+        public Source(string path)
+        {
+            this.path = path;
+        }
+
+        public void CreateSourceSet()
+        {
+            sourceSet = new List<SourceModel>();
+            using (StreamReader s = new StreamReader(path))
+            {
+                while (!s.EndOfStream)
+                {
+                    var currentLine = s.ReadLine();
+                    sourceSet.Add(new SourceModel(currentLine));
+                }
+            }
+        }
+
+        public void LoadSource(){
+            if (File.Exists(path))
+            {
+                Console.WriteLine("Load the File");
+            }
+            else throw new IOException("input file");
+        }
+
+        public override string ToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach(SourceModel s in sourceSet)
+            {
+                sb.Append(s.Name + " " + s.Phone + " " + s.EyeColor + " " + s.PositionID + " " + s.Title +"\n");
+             
+            }
+            return sb.ToString();
+        }
+
+    }
+
 }
 /*
 
