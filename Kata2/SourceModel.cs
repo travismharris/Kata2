@@ -18,11 +18,7 @@ namespace Kata2
 
         public string Title { get; set; }
 
-        public string Key
-        {
-            get { return Key; } 
-            set { Key = Name + Phone + EyeColor; } 
-        }
+        public string Key { get; set; }
 
         public SourceModel(string input)
         {
@@ -32,6 +28,7 @@ namespace Kata2
             EyeColor = dataPoints[2];
             PositionID = dataPoints[3];
             Title = dataPoints[4];
+            Key = Name + Phone + EyeColor;
         }
 
         public List<string> AssignInputToModel(string input)
