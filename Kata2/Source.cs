@@ -64,9 +64,26 @@ namespace Kata2
 
         public string OutputFile()
         {
+            var previousKey = "empty_key_value";
+            int counter = 1;
             StringBuilder sb = new StringBuilder("Name, Phone, EyeColor, PositionId, Title, PositionCount\n");
-            foreach(SourceModel s in sourceSet.Where(s=> s.Key.Count() > 1))
-            {}
+            for(int i = 0; i < sourceSet.Count(); i ++)
+            {
+                if (previousKey == sourceSet[i].Key)
+                {
+                    sb.AppendLine(", , , " + sourceSet[i].PositionID + ", " + sourceSet[i].Title + ", " + counter++);
+                    previousKey = sourceSet[i].Key;
+                }
+                else if (previousKey != sourceSet[i].Key)
+                {
+                    sb.AppendLine(sourceSet[i].Name + ", " + sourceSet[i].Phone + ", " + sourceSet[i].EyeColor + ", " + sourceSet[i].PositionID
+                        + ", " + sourceSet[i].Title + ", 1");
+                    counter=1;
+                    previousKey = sourceSet[i].Key;
+                }
+
+
+            }
               
                 
             /*

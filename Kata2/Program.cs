@@ -13,7 +13,7 @@ namespace Kata2
             var file = new Source();
             //file.CreateSourceList();
             Console.WriteLine("sorted file :\n" + file);
-            Console.WriteLine("output file: \n" + file);
+            Console.WriteLine("output file: \n" + file.OutputFile());
             Console.ReadKey();
         }
     }
