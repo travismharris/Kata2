@@ -23,12 +23,19 @@ namespace Kata2
         public SourceModel(string input)
         {
             var dataPoints = AssignInputToModel(input);
-            Name = dataPoints[0];
-            Phone = dataPoints[1];
-            EyeColor = dataPoints[2];
-            PositionID = dataPoints[3];
-            Title = dataPoints[4];
-            Key = Name + Phone + EyeColor;
+            if (dataPoints[0] == "Name" && dataPoints[1] == "Phone" & dataPoints[2] == "EyeColor")
+            {
+                Name = "SKIP_THIS_ROW";
+            }
+            else
+            {
+                Name = dataPoints[0];
+                Phone = dataPoints[1];
+                EyeColor = dataPoints[2];
+                PositionID = dataPoints[3];
+                Title = dataPoints[4];
+                Key = Name + Phone + EyeColor;
+            }
         }
 
         public List<string> AssignInputToModel(string input)

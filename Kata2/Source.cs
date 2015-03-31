@@ -11,12 +11,17 @@ namespace Kata2
     {
         private string path;
         public List<SourceModel> sourceSet;
+        
 
         public Source() : this("../../input/input.txt") { }
 
         public Source(string path)
         {
             this.path = path;
+            CreateSourceList();
+            CleanHeaderRow();
+            SortList();
+                        
         }
 
         public void CreateSourceList()
@@ -32,13 +37,19 @@ namespace Kata2
             }
         }
 
-        public void LoadSource()
+        public void SortList()
         {
-            if (File.Exists(path))
-            {
-                Console.WriteLine("Load the File");
-            }
-            else throw new IOException("input file");
+            var sortedList = sourceSet.OrderBy(s => s.Key).ToList();
+            sourceSet = sortedList;
+        }
+
+        public void CleanHeaderRow()
+        {
+            var cleanedSource = new List<SourceModel>();
+            foreach (SourceModel s in sourceSet.Where(s => s.Name != "SKIP_THIS_ROW"))
+                cleanedSource.Add(s);
+
+            sourceSet = cleanedSource;
         }
 
         public override string ToString()
@@ -46,20 +57,50 @@ namespace Kata2
             StringBuilder sb = new StringBuilder();
             foreach (SourceModel s in sourceSet)
             {
-                sb.Append(s.Name + ", " + s.Phone + ", " + s.EyeColor + ", " + s.PositionID + ", " + s.Title + s.Key + "\n");
+                sb.Append(s.Name + ", " + s.Phone + ", " + s.EyeColor + ", " + s.PositionID + ", " + s.Title + "\n");
             }
             return sb.ToString();
         }
 
-        public static string Output(List<SourceModel> sourceSet)
+        public string OutputFile()
         {
-            StringBuilder sb = new StringBuilder();
-            foreach(SourceModel s in sourceSet)
-            {
-                sb.Append("stub");
-            }
+            StringBuilder sb = new StringBuilder("Name, Phone, EyeColor, PositionId, Title, PositionCount\n");
+            foreach(SourceModel s in sourceSet.Where(s=> s.Key.Count() > 1))
+            {}
+              
+                
+            /*
+             *  T prev = default(T);
+                bool first = true;
+                foreach(T item in list) {
+                    if(first) {
+                        first = false;
+                    } 
+                    else 
+                    {
+                        Compare(prev, item);
+                    }
+                    prev = item;
+                }
+             */
+
+
+                //if new key then output whole line
+                //else output only PositionID and Title
+            
             return sb.ToString();
         }
 
     }
 }
+/*
+ Name       Phone       EyeColor        PositionID      Title               PositionCount
+ Franklin   1212        Blue            123             General Manager     1
+                                        67              Salesman            2
+ Pierce     1313        Blue            234             Digger              1
+                                        456             Porter              2
+ Hoolihan   1414        Green           123             General Manager     1
+ Bob        1515        Blue            86              Maid                1
+                                        90              Electrician         2
+
+*/

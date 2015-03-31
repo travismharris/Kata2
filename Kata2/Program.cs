@@ -11,8 +11,9 @@ namespace Kata2
         static void Main(string[] args)
         {
             var file = new Source();
-            file.CreateSourceList();
-            Console.WriteLine("original file : " + file);
+            //file.CreateSourceList();
+            Console.WriteLine("sorted file :\n" + file);
+            Console.WriteLine("output file: \n" + file);
             Console.ReadKey();
         }
     }
@@ -24,7 +25,11 @@ Using Name, Phone, and EyeColor as unique fields:
 -	Uniquely umber each different position for a user from 1 to N
 -	Only print Name, Phone, EyeColo fo the first record for a user
 
-Remember to write it assuming it will be used on a regular basis to produce the shown output as a file.  The output file can be delimited, doesn’t need to be spaced as shown.   In 2 weeks when we discuss our implementations we will evaluate how flexible the designs are because I will introduce some new elements to the problem that make it a tad more involved.  
+Remember to write it assuming it will be used on a regular basis to produce the shown 
+ * output as a file.  The output file can be delimited, doesn’t need to be spaced as 
+ * shown.   In 2 weeks when we discuss our implementations we will evaluate how 
+ * flexible the designs are because I will introduce some new elements to the problem 
+ * that make it a tad more involved.  
 
 Input
 
