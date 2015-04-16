@@ -45,6 +45,7 @@
     <Compile Include="Models\IFileFormat.cs" />
     <Compile Include="Models\NewRequirement.cs" />
     <Compile Include="Models\Output.cs" />
+    <Compile Include="Models\removeMe.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Source.cs" />
