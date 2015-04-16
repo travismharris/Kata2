@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Kata2.Models
 {
-    public interface IFileFormat
+    public interface IMinimalFile
     {
         string Name { get; set; }
 
@@ -19,7 +19,5 @@ namespace Kata2.Models
         string Title { get; set; }
 
         string Key { get; set; }
-
-        List<string> AssignInputToModel(string input);
     }
 }

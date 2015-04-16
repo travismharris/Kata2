@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Kata2
 {
-    public interface IGetInput
+    public interface ILoad
     {
-        void Load(string location);
+        void Load(string fileLocation);
     }
 }

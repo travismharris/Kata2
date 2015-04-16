@@ -41,8 +41,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IGetInput.cs" />
-    <Compile Include="Models\IFileFormat.cs" />
+    <Compile Include="ILoad.cs" />
+    <Compile Include="LoadFile.cs" />
+    <Compile Include="DataSet.cs" />
+    <Compile Include="Models\IMinimalFile.cs" />
     <Compile Include="Models\NewRequirement.cs" />
     <Compile Include="Models\Output.cs" />
     <Compile Include="Models\removeMe.cs" />

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Kata2.Models
 
 {
-    public class Original : IFileFormat
+    public class Original : IMinimalFile
     {
         public string Name { get; set; }
 

@@ -8,11 +8,11 @@ using Kata2.Models;
 
 namespace Kata2
 {
-    public class Source : IGetInput
+    public class Source : ILoad
     {
         private string path;
-        public List<IFileFormat> sourceSet;
-        private IFileFormat fileType;
+        public List<IMinimalFile> sourceSet;
+        private IMinimalFile fileType;
         
 
         public Source() : this("../../input/input.txt") { }
@@ -27,7 +27,7 @@ namespace Kata2
 
         public void CreateSourceList()
         {
-            sourceSet = new List<IFileFormat>();
+            sourceSet = new List<IMinimalFile>();
             using (StreamReader s = new StreamReader(path))
             {
                 var format=DetermineInputFormat(s.ReadLine());
@@ -47,7 +47,7 @@ namespace Kata2
             }
         }
 
-        public IFileFormat DetermineInputFormat(string header)
+        public IMinimalFile DetermineInputFormat(string header)
         {
             //This would better be handled by something like a Chain of Responsibility or some other type of handler mapping
             int fieldCount = 1;
@@ -74,7 +74,7 @@ namespace Kata2
 
         public void CleanHeaderRow()
         {
-            var cleanedSource = new List<IFileFormat>();
+            var cleanedSource = new List<IMinimalFile>();
             foreach (Original s in sourceSet.Where(s => s.Name != "SKIP_THIS_ROW"))
                 cleanedSource.Add(s);
 
@@ -117,7 +117,7 @@ namespace Kata2
 
         public void Load(string location)
         {
-            sourceSet = new List<IFileFormat>();
+            sourceSet = new List<IMinimalFile>();
             using (StreamReader s = new StreamReader(path))
             {
                 while (!s.EndOfStream)
