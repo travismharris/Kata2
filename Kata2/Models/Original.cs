@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kata2
+namespace Kata2.Models
+
 {
-    public class SourceModel
+    public class Original
     {
         public string Name { get; set; }
 
@@ -20,7 +21,7 @@ namespace Kata2
 
         public string Key { get; set; }
 
-        public SourceModel(string input)
+        public Original(string input)
         {
             var dataPoints = AssignInputToModel(input);
             if (dataPoints[0] == "Name" && dataPoints[1] == "Phone" & dataPoints[2] == "EyeColor")
