@@ -8,11 +8,22 @@ namespace Kata2
 {
     public class LoadFile : ILoad
     {
-        public DataSet dataFromSource;
+        public List<DataSet> dataFromSource;
 
         public void Load(string fileLocation)
         {
             throw new NotImplementedException();
         }
+
+
+        public LoadFile() : this("../../input/input.txt") { }
+
+        public LoadFile(string path)
+        {
+            //CreateSourceList();
+            //CleanHeaderRow();
+            //SortList();
+        }
+
     }
 }
