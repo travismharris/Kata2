@@ -71,7 +71,7 @@ namespace Kata2
             {
                 if (previousKey == sourceSet[i].Key)
                 {
-                    sb.AppendLine(", , , " + sourceSet[i].PositionID + ", " + sourceSet[i].Title + ", " + counter++);
+                    sb.AppendLine(", , , " + sourceSet[i].PositionID + ", " + sourceSet[i].Title + ", " + ++counter);
                     previousKey = sourceSet[i].Key;
                 }
                 else if (previousKey != sourceSet[i].Key)
