@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.IO;
+using Kata2.Models;
 
 namespace Kata2
 {
-    public class Source
+    public class Source : IInput
     {
         private string path;
-        public List<SourceModel> sourceSet;
+        public List<Original> sourceSet;
         
 
         public Source() : this("../../input/input.txt") { }
@@ -21,18 +22,17 @@ namespace Kata2
             CreateSourceList();
             CleanHeaderRow();
             SortList();
-                        
         }
 
         public void CreateSourceList()
         {
-            sourceSet = new List<SourceModel>();
+            sourceSet = new List<Original>();
             using (StreamReader s = new StreamReader(path))
             {
                 while (!s.EndOfStream)
                 {
                     var currentLine = s.ReadLine();
-                    sourceSet.Add(new SourceModel(currentLine));
+                    sourceSet.Add(new Original(currentLine));
                 }
             }
         }
@@ -45,8 +45,8 @@ namespace Kata2
 
         public void CleanHeaderRow()
         {
-            var cleanedSource = new List<SourceModel>();
-            foreach (SourceModel s in sourceSet.Where(s => s.Name != "SKIP_THIS_ROW"))
+            var cleanedSource = new List<Original>();
+            foreach (Original s in sourceSet.Where(s => s.Name != "SKIP_THIS_ROW"))
                 cleanedSource.Add(s);
 
             sourceSet = cleanedSource;
@@ -55,7 +55,7 @@ namespace Kata2
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (SourceModel s in sourceSet)
+            foreach (Original s in sourceSet)
             {
                 sb.Append(s.Name + ", " + s.Phone + ", " + s.EyeColor + ", " + s.PositionID + ", " + s.Title + "\n");
             }
@@ -71,7 +71,7 @@ namespace Kata2
             {
                 if (previousKey == sourceSet[i].Key)
                 {
-                    sb.AppendLine(", , , " + sourceSet[i].PositionID + ", " + sourceSet[i].Title + ", " + counter++);
+                    sb.AppendLine(", , , " + sourceSet[i].PositionID + ", " + sourceSet[i].Title + ", " + ++counter);
                     previousKey = sourceSet[i].Key;
                 }
                 else if (previousKey != sourceSet[i].Key)
@@ -81,33 +81,23 @@ namespace Kata2
                     counter=1;
                     previousKey = sourceSet[i].Key;
                 }
-
-
             }
               
-                
-            /*
-             *  T prev = default(T);
-                bool first = true;
-                foreach(T item in list) {
-                    if(first) {
-                        first = false;
-                    } 
-                    else 
-                    {
-                        Compare(prev, item);
-                    }
-                    prev = item;
-                }
-             */
-
-
-                //if new key then output whole line
-                //else output only PositionID and Title
-            
             return sb.ToString();
         }
 
+        public void Load(string location)
+        {
+            sourceSet = new List<Original>();
+            using (StreamReader s = new StreamReader(path))
+            {
+                while (!s.EndOfStream)
+                {
+                    var currentLine = s.ReadLine();
+                    sourceSet.Add(new Original(currentLine));
+                }
+            }
+        }
     }
 }
 /*

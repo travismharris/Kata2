@@ -11,8 +11,8 @@ namespace Kata2
         static void Main(string[] args)
         {
             var file = new Source();
-            //file.CreateSourceList();
             Console.WriteLine("sorted file :\n" + file);
+            Console.WriteLine(@"Your destination file will be written here: C:\Destination\Output.txt");
             Console.WriteLine("output file: \n" + file.OutputFile());
             Console.ReadKey();
         }
