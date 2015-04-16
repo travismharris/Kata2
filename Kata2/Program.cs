@@ -15,6 +15,11 @@ namespace Kata2
             Console.WriteLine(@"Your destination file will be written here: C:\Destination\Output.txt");
             Console.WriteLine("output file: \n" + file.OutputFile());
             Console.ReadKey();
+            
+            var newFile = new Source("c:\\input.txt");
+            Console.WriteLine("output file: \n" + file.OutputFile());
+            Console.ReadKey();
+
         }
     }
 }

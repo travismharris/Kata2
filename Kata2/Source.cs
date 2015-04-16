@@ -8,10 +8,11 @@ using Kata2.Models;
 
 namespace Kata2
 {
-    public class Source : IInput
+    public class Source : IGetInput
     {
         private string path;
-        public List<Original> sourceSet;
+        public List<IFileFormat> sourceSet;
+        private IFileFormat fileType;
         
 
         public Source() : this("../../input/input.txt") { }
@@ -26,15 +27,43 @@ namespace Kata2
 
         public void CreateSourceList()
         {
-            sourceSet = new List<Original>();
+            sourceSet = new List<IFileFormat>();
             using (StreamReader s = new StreamReader(path))
             {
+                var format=DetermineInputFormat(s.ReadLine());
+//                s.DiscardBufferedData();
+                
+
                 while (!s.EndOfStream)
                 {
                     var currentLine = s.ReadLine();
-                    sourceSet.Add(new Original(currentLine));
+                    if (format.GetType().ToString()=="Kata2.Models.Original")
+                        sourceSet.Add(new Original(currentLine));
+                    if (format.GetType().ToString() == "Kata2.Models.NewRequirement")
+                        sourceSet.Add(new NewRequirement(currentLine));
                 }
+
+
             }
+        }
+
+        public IFileFormat DetermineInputFormat(string header)
+        {
+            //This would better be handled by something like a Chain of Responsibility or some other type of handler mapping
+            int fieldCount = 1;
+            for (int i = 0 ; i < header.Length; i++)
+            {
+                if (header[i] == ',')
+                    fieldCount++;
+            }
+            var values = header.Split(new string[] { ", " }, fieldCount, StringSplitOptions.None).ToList();
+            if (values[0] == "Name" && values[1] == "Phone" & values[2] == "EyeColor" & values[fieldCount-1] == "FavoriteIceCream")
+                return new NewRequirement();
+            else if (values[0] == "Name" && values[1] == "Phone" & values[2] == "EyeColor")
+                return new Original();
+            else
+                throw new InvalidOperationException("Invalid File Format Provided");
+
         }
 
         public void SortList()
@@ -45,7 +74,7 @@ namespace Kata2
 
         public void CleanHeaderRow()
         {
-            var cleanedSource = new List<Original>();
+            var cleanedSource = new List<IFileFormat>();
             foreach (Original s in sourceSet.Where(s => s.Name != "SKIP_THIS_ROW"))
                 cleanedSource.Add(s);
 
@@ -88,7 +117,7 @@ namespace Kata2
 
         public void Load(string location)
         {
-            sourceSet = new List<Original>();
+            sourceSet = new List<IFileFormat>();
             using (StreamReader s = new StreamReader(path))
             {
                 while (!s.EndOfStream)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Kata2
 {
-    public interface IInput
+    public interface IGetInput
     {
         void Load(string location);
     }

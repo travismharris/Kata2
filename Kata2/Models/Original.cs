@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Kata2.Models
 
 {
-    public class Original
+    public class Original : IFileFormat
     {
         public string Name { get; set; }
 
@@ -20,6 +20,8 @@ namespace Kata2.Models
         public string Title { get; set; }
 
         public string Key { get; set; }
+
+        public Original() { }
 
         public Original(string input)
         {
@@ -43,5 +45,7 @@ namespace Kata2.Models
         {
             return input.Split(new string[]{", "}, 5, StringSplitOptions.None).ToList();
         }
+
+        
     }
 }
