@@ -10,12 +10,6 @@ namespace Kata2
     {
         public List<DataSet> dataFromSource;
 
-        public void Load(string fileLocation)
-        {
-            throw new NotImplementedException();
-        }
-
-
         public LoadFile() : this("../../input/input.txt") { }
 
         public LoadFile(string path)
@@ -24,6 +18,10 @@ namespace Kata2
             //CleanHeaderRow();
             //SortList();
         }
-
+        
+        public void Load(string fileLocation)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
