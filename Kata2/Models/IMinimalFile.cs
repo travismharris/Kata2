@@ -18,6 +18,6 @@ namespace Kata2.Models
 
         string Title { get; set; }
 
-        string Key { get; set; }
+        //string Key { get; set; }
     }
 }

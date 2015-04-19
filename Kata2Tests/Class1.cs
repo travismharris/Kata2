@@ -18,8 +18,27 @@ namespace Kata2Tests
         public void CreatingAnInstanceOfLoadFilePopulatesDataSet_IfFileExists()
         {
             LoadFile loader = new LoadFile();
+            
             Assert.Equal(loader.dataFromSource != null, true);
             //should fail until I get LoadFile written
         }
+
+        [Fact]
+        public void CreatingAnInstanceOfLoadFile_ThrowsIfFileDoesNotExist()
+        {
+            Assert.Throws<System.IO.FileNotFoundException>(
+                delegate 
+                {
+                    LoadFile loader = new LoadFile("noFileByThatName.txt");
+                }
+            );
+        }
     }
 }
+/*
+    Assert.Throws<ArgumentNullException>(
+      delegate
+      {
+          //throw ...
+      });
+*/

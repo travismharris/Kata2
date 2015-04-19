@@ -10,15 +10,17 @@ namespace Kata2
     {
         static void Main(string[] args)
         {
-            var file = new Source();
-            Console.WriteLine("sorted file :\n" + file);
-            Console.WriteLine(@"Your destination file will be written here: C:\Destination\Output.txt");
-            Console.WriteLine("output file: \n" + file.OutputFile());
-            Console.ReadKey();
+            var temp = new LoadFile();
+            Console.ReadKey(); 
+            //var file = new Source();
+            //Console.WriteLine("sorted file :\n" + file);
+            //Console.WriteLine(@"Your destination file will be written here: C:\Destination\Output.txt");
+            //Console.WriteLine("output file: \n" + file.OutputFile());
+            //Console.ReadKey();
             
-            var newFile = new Source("c:\\input.txt");
-            Console.WriteLine("output file: \n" + file.OutputFile());
-            Console.ReadKey();
+            //var newFile = new Source("c:\\input.txt");
+            //Console.WriteLine("output file: \n" + file.OutputFile());
+            //Console.ReadKey();
 
         }
     }

@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Kata2.Models;
+using FileHelpers;
 
 namespace Kata2
 {
+    [DelimitedRecord(",")]
     public class DataSet : IMinimalFile
     {
 
@@ -20,6 +22,6 @@ namespace Kata2
         
         public string Title  { get; set; }
         
-        public string Key  { get; set; }
+       // public string Key  { get; set; }
     }
 }
