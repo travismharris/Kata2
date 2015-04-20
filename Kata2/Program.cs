@@ -11,6 +11,10 @@ namespace Kata2
         static void Main(string[] args)
         {
             var temp = new LoadFile();
+            foreach(var a in temp.dataFromSource)
+            {
+                Console.WriteLine("Name: " + a.Name + " Eye Color: " + a.EyeColor + " Phone: " + a.Phone + " PositionID: " + a.PositionID + " Title: " + a.Title);
+            }
             Console.ReadKey(); 
             //var file = new Source();
             //Console.WriteLine("sorted file :\n" + file);
