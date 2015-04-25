@@ -11,7 +11,6 @@ namespace Kata2
     [DelimitedRecord(",")]
     public class DataSet : IMinimalFile
     {
-
         public string Name { get; set; }
 
         public string Phone  { get; set; }
@@ -21,7 +20,5 @@ namespace Kata2
         public string PositionID  { get; set; }
         
         public string Title  { get; set; }
-        
-       // public string Key  { get; set; }
     }
 }

@@ -11,6 +11,10 @@ namespace Kata2
         static void Main(string[] args)
         {
             var temp = new LoadFile();
+            // the file was successfully loaded from the line above
+            // create the file output/transformation
+            // write to screen
+            // write to file
             foreach(var a in temp.dataFromSource)
             {
                 Console.WriteLine("Name: " + a.Name + " Eye Color: " + a.EyeColor + " Phone: " + a.Phone + " PositionID: " + a.PositionID + " Title: " + a.Title);
