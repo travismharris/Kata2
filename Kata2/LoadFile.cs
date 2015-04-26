@@ -68,12 +68,10 @@ namespace Kata2
                 throw new InvalidDataException("Provided input file doesn't contain all required headers.");
         }
 
-        public int PropertiesCount(object testee)
+        public int PropertiesCount(object getPropertyCount)
         {
-            var bah1 = testee.GetType();
-            var bah2 = bah1.GetProperties();
-            var bah = testee.GetType().GetProperties().Count();
-            return bah;
+            var propCount = getPropertyCount.GetType().GetProperties().Count();
+            return propCount;
         }
     }
 }

@@ -15,7 +15,10 @@ namespace Kata2
             // create the file output/transformation
             // write to screen
             // write to file
-            foreach(var a in temp.dataFromSource)
+
+            var transformTemp = new Transform(temp.dataFromSource);
+            
+            foreach(var a in transformTemp.transformedFile)
             {
                 Console.WriteLine("Name: " + a.Name + " Eye Color: " + a.EyeColor + " Phone: " + a.Phone + " PositionID: " + a.PositionID + " Title: " + a.Title);
             }
