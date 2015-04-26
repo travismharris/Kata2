@@ -28,5 +28,29 @@ namespace Kata2
             }
             transformedFile.OrderBy(s => s.Key);
         }
+
+        public void Format()
+        {
+            var previousKey = "empty_key_value";
+            int counter = 1;
+            StringBuilder sb = new StringBuilder("Name, Phone, EyeColor, PositionId, Title, PositionCount\n");
+            for (int i = 0; i < transformedFile.Count(); i++)
+            {
+                if (previousKey == transformedFile[i].Key)
+                {
+                    sb.AppendLine(", , , " + transformedFile[i].PositionID + ", " + transformedFile[i].Title + ", " + ++counter);
+                    previousKey = transformedFile[i].Key;
+                }
+                else if (previousKey != transformedFile[i].Key)
+                {
+                    sb.AppendLine(transformedFile[i].Name + ", " + transformedFile[i].Phone + ", " + transformedFile[i].EyeColor + ", " + transformedFile[i].PositionID
+                        + ", " + transformedFile[i].Title + ", 1");
+                    counter = 1;
+                    previousKey = transformedFile[i].Key;
+                }
+            }
+
+            //return sb.ToString();
+        }
     }
 }

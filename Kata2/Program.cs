@@ -17,7 +17,9 @@ namespace Kata2
             // write to file
 
             var transformTemp = new Transform(temp.dataFromSource);
-            
+
+            transformTemp.Format();
+
             foreach(var a in transformTemp.transformedFile)
             {
                 Console.WriteLine("Name: " + a.Name + " Eye Color: " + a.EyeColor + " Phone: " + a.Phone + " PositionID: " + a.PositionID + " Title: " + a.Title);
