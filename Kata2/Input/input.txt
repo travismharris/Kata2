@@ -1,6 +1,6 @@
 Name, Phone, EyeColor, PositionID, Title
 Franklin, 1212, Blue, 123, "General Manager"
-Franklin, 1212, Blue, 67, Salesman
+Franklin, 1212, Blue, 67, Salesman, extra
 Pierce, 1313, Blue, 234, Digger
 Pierce, 1313, Blue, 456, Porter
 Hoolihan, 1414, Green, 123, "General Manager"

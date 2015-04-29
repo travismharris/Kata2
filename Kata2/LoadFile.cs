@@ -25,12 +25,18 @@ namespace Kata2
             if(!File.Exists(fileLocation))
                 throw new FileNotFoundException("sourceFile");
 
-            using (StreamReader reader = new StreamReader(fileLocation))
+            try
             {
-                ConfirmHeaders(reader.ReadLine());
+                using (StreamReader reader = new StreamReader(fileLocation))
+                {
+                    ConfirmHeaders(reader.ReadLine());
+                }
+            }catch (InvalidDataException e)
+            {
+                Console.WriteLine("Exception: " + e.Message + e.ToString());
+                throw new Exception("See Inner Exception for Detail", e);
             }
-
-            //if the file doesn't exist in an accepted format the above throws an exeption
+            
             FileHelperEngine<DataSet> engine = new FileHelperEngine<DataSet>();
             dataFromSource = engine.ReadFile(fileLocation).ToList();
             
@@ -50,9 +56,22 @@ namespace Kata2
                 values[i] = values[i].Trim();
             }
 
-            if (!(values[0] == "Name" && values[1] == "Phone" & values[2] == "EyeColor"))
-                throw new InvalidDataException("sourceFile");
+            bool one = values.Contains("EyeColor");
+            bool two = values.Contains("Title");
+            bool three = values.Contains("PositionID");
+            bool four = values.Contains("Name");
+            bool five = values.Contains("Phone");
+
+            
+            if (fieldCount > this.PropertiesCount(new DataSet()) || (!(values.Contains("EyeColor") && values.Contains("Name") && values.Contains("Phone") &&
+                values.Contains("PositionID") && values.Contains("Title"))))
+                throw new InvalidDataException("Provided input file doesn't contain all required headers.");
         }
 
+        public int PropertiesCount(object getPropertyCount)
+        {
+            var propCount = getPropertyCount.GetType().GetProperties().Count();
+            return propCount;
+        }
     }
 }

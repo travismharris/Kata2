@@ -18,22 +18,6 @@ namespace Kata2.Models
 
         public string Title { get; set; }
 
-        public string Key { get; set; }
-
         public string FavoriteIceCream { get; set; }
-
-        public NewRequirement() { }
-
-        public NewRequirement( string input)
-        {
-            AssignInputToModel(input);
-        }
-
-        public List<string> AssignInputToModel(string input)
-        {
-            //here we'll want to make sure we grab the right info and put it into the right Fields. 
-            //including our new favoriteIceCream data point
-            throw new NotImplementedException();
-        }
     }
 }

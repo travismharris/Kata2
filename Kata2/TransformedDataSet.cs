@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Kata2.Models
+namespace Kata2
 {
-    public class Output
+    public class TransformedDataSet : IOutput
     {
         public string Name { get; set; }
 
@@ -15,10 +15,9 @@ namespace Kata2.Models
         public string EyeColor { get; set; }
 
         public string PositionID { get; set; }
-
+      
         public string Title { get; set; }
 
         public string Key { get; set; }
-
     }
 }
