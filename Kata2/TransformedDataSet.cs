@@ -19,5 +19,7 @@ namespace Kata2
         public string Title { get; set; }
 
         public string Key { get; set; }
+
+        public string PositionCount {get; set;}
     }
 }

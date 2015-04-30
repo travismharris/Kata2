@@ -22,7 +22,7 @@ namespace Kata2
 
             foreach(var a in transformTemp.transformedFile)
             {
-                Console.WriteLine("Name: " + a.Name + " Eye Color: " + a.EyeColor + " Phone: " + a.Phone + " PositionID: " + a.PositionID + " Title: " + a.Title);
+                Console.WriteLine(a.Name + ", " + a.EyeColor + ", " + a.Phone + ", " + a.PositionID + ", " + a.Title +", " + a.PositionCount);
             }
             Console.ReadKey(); 
             //var file = new Source();
